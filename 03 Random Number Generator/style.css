@@ -1,0 +1,106 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap");
+
+:root {
+  --white: #fff;
+  --black: #1c2b2d;
+  --blue: #31326f;
+  --light-blue: #005490;
+  --color-primary: #9d0191;
+  --color-sec: #db6400;
+  --grey: #eee;
+  --dark-grey: #222831;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 10px;
+}
+
+body {
+  background-color: rgb(105, 4, 4) ;
+  font-family: "Open Sans", sans-serif;
+}
+.container{
+  max-width:900px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+.container-div{
+  position: relative;
+  text-align: center;
+  margin:0 auto;
+  width: 500px;
+  padding: 2em;
+  background-color: #ced2e2;
+  color: rgb(2, 2, 2);
+  border: none;
+  border-radius: 10px;
+}
+h1{
+  font-size: 3rem;
+  font-weight: bold;
+  background-clip: text;
+  color: transparent;
+  background: linear-gradient(90deg,#ff0909, blue,red,blue); /* Your gradient */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.count{
+  margin-top:20px ;
+  font-size: 5rem;
+  color: #140303;
+}
+.buttons button{
+  margin-top: 20px;
+  border: 1px solid black;
+  font-size: 20px;
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  border-radius: 10px;
+}
+.generate{
+  background-color: #11ccda;
+  color: black;
+}
+@property --angle{
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+.container-div::after,.container-div::before{
+  border-radius: 10px;
+  content: "";
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-image: conic-gradient(from var(--angle), #ff4545, #00ff99, #006aff);
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+  z-index: -1;
+  padding: 5px;
+  animation: 3s spin linear infinite;
+}
+.container-div::before{
+  filter: blur(1.5rem);
+  opacity: 1rem;
+}
+@keyframes spin{
+  from{
+    --angle: 0deg;
+  }to{
+    --angle: 360deg;
+  }
+}
