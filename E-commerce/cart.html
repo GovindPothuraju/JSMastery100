@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>MyCart - Shopping Cart</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <header>
+    <h1>MyCart</h1>
+    <nav>
+      <a href="./index.html">Home</a>
+      <a href="#">About</a>
+      <a href="#">Contact</a>
+      <a href="./cart.html" class="cart-link">Cart<span class="cart-count">0</span></a>
+    </nav>
+  </header>
+
+  <main class="cart-page">
+    <h2 class="cart-title">Your Cart</h2>
+
+    <div id="cart-container">
+      <div id="cart-items" class="cart-items-wrapper"></div>
+      <div id="summary" class="cart-summary"></div>
+    </div>
+
+    <button class="checkout-button" onclick="checkout()">Checkout</button>
+  </main>
+
+  <footer class="site-footer">
+    <p>&copy; 2025 MyCart. All rights reserved.</p>
+  </footer>
+
+  <script>
+    let cartItems = JSON.parse(localStorage.getItem("cart")) || [];
+
+    const cartDiv = document.getElementById("cart-items");
+    const summaryDiv = document.getElementById("summary");
+
+    function render() {
+      cartDiv.innerHTML = "";
+      summaryDiv.innerHTML = "";
+
+      if (cartItems.length === 0) {
+        cartDiv.innerHTML = "<h3 class='empty-cart'>No items in cart.</h3>";
+        updateCartCount();
+        return;
+      }
+
+      let totalItems = 0;
+      let totalPrice = 0;
+
+      cartItems.forEach((item, index) => {
+        totalItems += item.quantity;
+        totalPrice += item.total;
+
+        const div = document.createElement("div");
+        div.className = "cart-item";
+        div.innerHTML = `
+          <img src="${item.thumbnail}" alt="${item.title}" class="cart-item-image">
+          <div class="cart-item-details">
+            <h3 class="cart-item-title">${item.title}</h3>
+            <p>Quantity: ${item.quantity}</p>
+            <p>Price: Rs.${item.price}</p>
+            <p>Total: Rs.${item.total}</p>
+            <button class="remove-btn" onclick="removeItem(${index})">Remove</button>
+          </div>
+        `;
+        cartDiv.appendChild(div);
+      });
+
+      summaryDiv.innerHTML = `
+        <h3>Summary</h3>
+        <p>Total Items: ${totalItems}</p>
+        <p>Grand Total: Rs.${totalPrice.toFixed(2)}</p>
+      `;
+
+      updateCartCount();
+    }
+
+    function removeItem(index) {
+      cartItems.splice(index, 1);
+      localStorage.setItem("cart", JSON.stringify(cartItems));
+      render();
+    }
+
+    function updateCartCount() {
+      document.querySelector(".cart-count").textContent = cartItems.length;
+    }
+
+    function checkout() {
+      alert("Checkout is currently not functional. Just a demo.");
+    }
+
+    render();
+    updateCartCount();
+  </script>
+
+</body>
+</html>
