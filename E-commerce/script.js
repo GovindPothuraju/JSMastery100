@@ -1,7 +1,6 @@
 let allProducts=[];
     function productCard(products,container){
       container.innerHTML="";
-      console.log(products)
       products.map((product)=>{
         const card = document.createElement("div");
         card.className="card";
