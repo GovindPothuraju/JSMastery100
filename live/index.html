@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Number Guessing Game</title>
+  <link rel="stylesheet" href="./number.css">
+</head>
+<body>
+    <Button class="ready">Ready</Button>
+  <div class="container">
+      
+      <h2>Number Guessing Game</h1>
+      <input type="number" class="input" placeholder="Enter a number 1 to 100">
+      <div class="buttons">
+        <button class="check">Ckeck</button>
+        <button class="reset">Reset</button>
+      </div>
+      <p class="output"></p>
+      <p class="Timer"></p>
+  </div>
+  <script>
+
+    let Computer= Math.floor(Math.random()*100)+1;
+    console.log(Computer); 
+    const input=document.querySelector('.input');
+    const check=document.querySelector('.check');
+    const reset=document.querySelector('.reset');
+    const output=document.querySelector('.output');
+    const ready=document.querySelector('.ready');
+    const Timer=document.querySelector('.Timer');
+
+    input.disabled=true;
+    check.disabled=true;
+    ready.disabled=false;
+    let timeLeft=5;
+
+    function StartTimer(){
+      Timer.textContent=`${timeLeft} seconds left`;
+      let timeInverval=setInterval(()=>{
+        if(timeLeft<=0){
+          clearInterval(timeInterval);
+          output.textContent="Ran outoff time!";
+          output.style.color="red";
+          return;
+        }
+        timeLeft--;
+        Timer.textContent=`${timeLeft} seconds left`;
+      },1000)
+
+    }
+
+    check.addEventListener("click",()=>{
+      let UserGuess=Number(input.value);
+      if(UserGuess<1 || UserGuess>100){
+        output.textContent="You guess is out of range!";
+        output.style.color="red";
+      }
+      else if(UserGuess==Computer){
+        output.textContent="Congratulations! You guessed the number!";
+        output.style.color="green";
+        input.disabled=true;
+        clearInterval(timeInterval);
+      }else if(UserGuess > Computer){
+        output.textContent="Too high! Try again.";
+        output.style.color="red";
+      }else{
+        output.textContent="Too low! Try again.";
+        output.style.color="red";
+      }
+      input.value="";
+    })
+
+
+    reset.addEventListener("click",()=>{
+      document.querySelector('.container').style.display="none";
+      ready.style.display="block";
+      Computer= Math.floor(Math.random()*100)+1;
+      input.value="";
+      output.textContent="";
+      clearInterval(timeInterval);
+      input.disabled=true;
+      check.disabled=true;
+      ready.disabled=false;
+    })
+
+    ready.addEventListener("click",()=>{
+
+      document.querySelector('.container').style.display="block";
+      ready.style.display="none";
+      StartTimer();
+      input.disabled=false;
+      check.disabled=false;
+      ready.disabled=true;
+    })
+
+  </script>
+</body>
+</html>
