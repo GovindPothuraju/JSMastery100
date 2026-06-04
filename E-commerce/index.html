@@ -2,10 +2,11 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Flipkart Clone</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MyCart - Your Premium E-Commerce Platform</title>
   <link rel="stylesheet" href="./styles.css">
   <!-- Google Tag Manager -->
-    <script>
+  <script>
     (function(w,d,s,l,i){w[l]=w[l]||[];
     w[l].push({'gtm.start':
     new Date().getTime(),event:'gtm.js'});
@@ -15,41 +16,167 @@
     j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;
     f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-PFQGGDCG');
-    </script>
-<!-- End Google Tag Manager -->
+  </script>
+  <!-- End Google Tag Manager -->
   <style>
-    /* YouTube Videos Section Styles */
-    .videos-section {
-      padding: 60px 20px;
-      background: linear-gradient(135deg, #f5f5f5 0%, #ffffff 100%);
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
 
-    .videos-section h2 {
-      text-align: center;
-      font-size: 2.5em;
-      margin-bottom: 50px;
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      background: #f8f9fa;
       color: #333;
-      font-weight: 600;
-      position: relative;
-      padding-bottom: 20px;
     }
 
-    .videos-section h2::after {
+    /* Header Styles */
+    header {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    header .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    header h1 {
+      font-size: 2rem;
+      font-weight: 700;
+      letter-spacing: -1px;
+    }
+
+    nav {
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: white;
+      font-weight: 500;
+      transition: opacity 0.3s;
+    }
+
+    nav a:hover {
+      opacity: 0.8;
+    }
+
+    .cart-link {
+      background: rgba(255, 255, 255, 0.2);
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      position: relative;
+      font-weight: 600;
+    }
+
+    .cart-count {
+      position: absolute;
+      top: -8px;
+      right: -8px;
+      background: #ff6b6b;
+      color: white;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      font-weight: 700;
+    }
+
+    /* Hero Section */
+    .hero {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 4rem 2rem;
+      text-align: center;
+    }
+
+    .hero-content {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .hero h2 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      font-weight: 800;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+      opacity: 0.95;
+      line-height: 1.6;
+    }
+
+    .cta-button {
+      display: inline-block;
+      background: white;
+      color: #667eea;
+      padding: 0.8rem 2rem;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: 700;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .cta-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Learning Section */
+    .learning-section {
+      padding: 4rem 2rem;
+      background: white;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 3rem;
+      color: #333;
+      position: relative;
+      padding-bottom: 1rem;
+    }
+
+    .section-title::after {
       content: '';
       position: absolute;
       bottom: 0;
       left: 50%;
       transform: translateX(-50%);
-      width: 80px;
+      width: 60px;
       height: 4px;
-      background: linear-gradient(90deg, #ff6b00, #ffa500);
+      background: linear-gradient(90deg, #667eea, #764ba2);
       border-radius: 2px;
     }
 
-    .videos-container {
+    .section-subtitle {
+      text-align: center;
+      color: #666;
+      margin-bottom: 2rem;
+      font-size: 1.1rem;
+    }
+
+    .videos-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 30px;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2rem;
       max-width: 1200px;
       margin: 0 auto;
     }
@@ -58,76 +185,246 @@
       background: white;
       border-radius: 12px;
       overflow: hidden;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+      transition: transform 0.3s, box-shadow 0.3s;
     }
 
     .video-card:hover {
       transform: translateY(-8px);
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
     }
 
-    .video-thumbnail {
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
-      display: block;
+    .video-wrapper {
       position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+      background: #f0f0f0;
     }
 
-    .video-card-content {
-      padding: 20px;
+    .video-wrapper iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    .video-content {
+      padding: 1.5rem;
     }
 
     .video-title {
-      font-size: 1.1em;
+      font-size: 1.1rem;
       font-weight: 600;
+      margin-bottom: 0.5rem;
       color: #333;
-      margin-bottom: 10px;
       line-height: 1.4;
-      display: -webkit-box;
-      -webkit-line-clamp: 2;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
     }
 
     .video-channel {
-      font-size: 0.9em;
+      font-size: 0.9rem;
       color: #666;
-      margin-bottom: 15px;
-      font-weight: 500;
+      margin-bottom: 1rem;
     }
 
-    .video-button {
+    .badge {
       display: inline-block;
-      background: linear-gradient(90deg, #ff6b00, #ffa500);
+      background: #667eea;
       color: white;
-      padding: 10px 25px;
-      border-radius: 25px;
-      text-decoration: none;
-      font-size: 0.9em;
+      padding: 0.4rem 0.8rem;
+      border-radius: 20px;
+      font-size: 0.8rem;
       font-weight: 600;
-      transition: opacity 0.3s ease;
+    }
+
+    /* Products Section */
+    .products-section {
+      padding: 4rem 2rem;
+      background: #f8f9fa;
+    }
+
+    .controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 2rem;
+      max-width: 1200px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .controls input,
+    .controls select,
+    .controls button {
+      padding: 0.8rem 1rem;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-family: inherit;
+    }
+
+    .controls input {
+      flex: 1;
+      min-width: 250px;
+    }
+
+    .controls button,
+    .controls select {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
       border: none;
       cursor: pointer;
-      width: 100%;
-      text-align: center;
+      font-weight: 600;
+      transition: opacity 0.3s;
     }
 
-    .video-button:hover {
+    .controls button:hover,
+    .controls select:hover {
       opacity: 0.9;
     }
 
+    .card-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 2rem;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .card {
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+    }
+
+    .card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .card-body {
+      padding: 1.5rem;
+    }
+
+    .card h3 {
+      font-size: 1rem;
+      margin-bottom: 0.5rem;
+      color: #333;
+      min-height: 2.5rem;
+      line-height: 1.3;
+    }
+
+    .card p {
+      font-size: 0.9rem;
+      color: #666;
+      margin-bottom: 0.5rem;
+    }
+
+    .price {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #667eea;
+      margin-bottom: 1rem;
+    }
+
+    .rating {
+      color: #ffc107;
+      font-size: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .add-to-cart-button {
+      width: 100%;
+      padding: 0.8rem;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: opacity 0.3s;
+    }
+
+    .add-to-cart-button:hover {
+      opacity: 0.9;
+    }
+
+    /* Footer */
+    footer {
+      background: #222;
+      color: white;
+      text-align: center;
+      padding: 3rem 2rem;
+      margin-top: 4rem;
+    }
+
+    footer p {
+      margin-bottom: 1rem;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .footer-links a {
+      color: #ccc;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .footer-links a:hover {
+      color: white;
+    }
+
+    /* Loader */
+    .loader {
+      text-align: center;
+      padding: 2rem;
+      color: #667eea;
+      font-weight: 600;
+    }
+
     @media (max-width: 768px) {
-      .videos-section h2 {
-        font-size: 1.8em;
-        margin-bottom: 30px;
+      .hero h2 {
+        font-size: 2rem;
       }
 
-      .videos-container {
-        grid-template-columns: 1fr;
-        gap: 20px;
+      .section-title {
+        font-size: 1.8rem;
+      }
+
+      nav {
+        gap: 1rem;
+      }
+
+      header h1 {
+        font-size: 1.5rem;
+      }
+
+      .card-container {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 1rem;
+      }
+
+      .controls {
+        flex-direction: column;
+      }
+
+      .controls input {
+        width: 100%;
       }
     }
   </style>
@@ -135,106 +432,151 @@
 <body>
   <!-- Google Tag Manager (noscript) -->
   <noscript>
-  <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PFQGGDCG"
-  height="0" width="0" style="display:none;visibility:hidden"></iframe>
+    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PFQGGDCG"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe>
   </noscript>
   <!-- End Google Tag Manager (noscript) -->
 
-  
+  <!-- Header -->
   <header>
-    <h1>Flipkart</h1>
-    <nav>
-      <a href="#">Home</a>
-      <a href="#">About</a>
-      <a href="#">Contact</a>
-      <a href="./cart.html" class="cart-link">Cart<span class="cart-count">0</span></a>
-    </nav>
+    <div class="container">
+      <h1>🛒 MyCart</h1>
+      <nav>
+        <a href="#home">Home</a>
+        <a href="#learning">Learn</a>
+        <a href="#products">Shop</a>
+        <a href="#about">About</a>
+        <a href="./cart.html" class="cart-link">🛍️ Cart <span class="cart-count">0</span></a>
+      </nav>
+    </div>
   </header>
 
-  <main>
-    <h2>Products from Carts</h2>
-
-    <div class="controls">
-      <input type="text" id="searchInput" placeholder="Search by title..." />
-      <button onclick="searchProducts()">Search</button>
-      <button onclick="resetProducts()">Show All</button>
-
-      <label for="Rating">Filter by Quantity:</label>
-      <select id="Rating" onchange="filterByQuantity()">
-        <option value="0">All</option>
-        <option value="1">1+</option>
-        <option value="2">2+</option>
-        <option value="3">3+</option>
-        <option value="4">4+</option>
-        <option value="5">5+</option>
-      </select>
+  <!-- Hero Section -->
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <h2>Welcome to MyCart</h2>
+      <p>Your ultimate destination for premium products and learning resources. Shop smart, learn faster, grow stronger.</p>
+      <a href="#products" class="cta-button">Start Shopping</a>
     </div>
+  </section>
 
-    <div class="card-container" id="cards"></div>
-  </main>
-
-  <!-- YouTube Videos Section -->
-  <section class="videos-section">
-    <h2>Featured YouTube Videos</h2>
-    <div class="videos-container">
+  <!-- Learning Section with Akshay Saini Videos -->
+  <section class="learning-section" id="learning">
+    <h2 class="section-title">📚 Learn From the Best</h2>
+    <p class="section-subtitle">Master JavaScript and Web Development from industry experts</p>
+    
+    <div class="videos-grid">
       <!-- Video 1 -->
       <div class="video-card">
-        <img src="https://img.youtube.com/vi/dQw4w9WgXcQ/hqdefault.jpg" alt="Video 1" class="video-thumbnail">
-        <div class="video-card-content">
-          <h3 class="video-title">JavaScript Mastery: Complete Guide for Beginners</h3>
-          <p class="video-channel">JavaScript Mastery</p>
-          <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" class="video-button">Watch on YouTube</a>
+        <div class="video-wrapper">
+          <iframe src="https://www.youtube.com/embed/8aGhZQkoFbQ" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+        <div class="video-content">
+          <h3 class="video-title">Namaste JavaScript - Season 1</h3>
+          <p class="video-channel">Akshay Saini</p>
+          <span class="badge">Beginner</span>
         </div>
       </div>
 
       <!-- Video 2 -->
       <div class="video-card">
-        <img src="https://img.youtube.com/vi/jS4aFq5-91M/hqdefault.jpg" alt="Video 2" class="video-thumbnail">
-        <div class="video-card-content">
-          <h3 class="video-title">E-commerce Web Development Tutorial</h3>
-          <p class="video-channel">Web Dev Simplified</p>
-          <a href="https://www.youtube.com/watch?v=jS4aFq5-91M" target="_blank" class="video-button">Watch on YouTube</a>
+        <div class="video-wrapper">
+          <iframe src="https://www.youtube.com/embed/2_w0DW0g0TI" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+        <div class="video-content">
+          <h3 class="video-title">JavaScript Basics: This Keyword</h3>
+          <p class="video-channel">Akshay Saini</p>
+          <span class="badge">Intermediate</span>
         </div>
       </div>
 
       <!-- Video 3 -->
       <div class="video-card">
-        <img src="https://img.youtube.com/vi/CjP_w45swy4/hqdefault.jpg" alt="Video 3" class="video-thumbnail">
-        <div class="video-card-content">
-          <h3 class="video-title">Responsive HTML & CSS Design Tips</h3>
-          <p class="video-channel">Traversy Media</p>
-          <a href="https://www.youtube.com/watch?v=CjP_w45swy4" target="_blank" class="video-button">Watch on YouTube</a>
+        <div class="video-wrapper">
+          <iframe src="https://www.youtube.com/embed/u0rxVtmJM8s" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+        <div class="video-content">
+          <h3 class="video-title">Closures in JavaScript Explained</h3>
+          <p class="video-channel">Akshay Saini</p>
+          <span class="badge">Intermediate</span>
         </div>
       </div>
 
       <!-- Video 4 -->
       <div class="video-card">
-        <img src="https://img.youtube.com/vi/Mus_v8QyalE/hqdefault.jpg" alt="Video 4" class="video-thumbnail">
-        <div class="video-card-content">
-          <h3 class="video-title">Shopping Cart Implementation with JavaScript</h3>
-          <p class="video-channel">Code with Harry</p>
-          <a href="https://www.youtube.com/watch?v=Mus_v8QyalE" target="_blank" class="video-button">Watch on YouTube</a>
+        <div class="video-wrapper">
+          <iframe src="https://www.youtube.com/embed/y8_XewVW8j4" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+        <div class="video-content">
+          <h3 class="video-title">Prototypes and Prototype Chain</h3>
+          <p class="video-channel">Akshay Saini</p>
+          <span class="badge">Advanced</span>
         </div>
       </div>
 
       <!-- Video 5 -->
       <div class="video-card">
-        <img src="https://img.youtube.com/vi/lI1ae2REbFM/hqdefault.jpg" alt="Video 5" class="video-thumbnail">
-        <div class="video-card-content">
-          <h3 class="video-title">Modern Web Development Best Practices 2025</h3>
-          <p class="video-channel">DesignCourse</p>
-          <a href="https://www.youtube.com/watch?v=lI1ae2REbFM" target="_blank" class="video-button">Watch on YouTube</a>
+        <div class="video-wrapper">
+          <iframe src="https://www.youtube.com/embed/OO0QP0m0DQs" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+        <div class="video-content">
+          <h3 class="video-title">Async/Await Deep Dive</h3>
+          <p class="video-channel">Akshay Saini</p>
+          <span class="badge">Advanced</span>
+        </div>
+      </div>
+
+      <!-- Video 6 -->
+      <div class="video-card">
+        <div class="video-wrapper">
+          <iframe src="https://www.youtube.com/embed/sO1IA_8TwUw" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+        <div class="video-content">
+          <h3 class="video-title">Event Bubbling & Event Delegation</h3>
+          <p class="video-channel">Akshay Saini</p>
+          <span class="badge">Intermediate</span>
         </div>
       </div>
     </div>
   </section>
 
-  <footer>
-    <p>&copy; 2025 MyCart. All rights reserved.</p>
+  <!-- Products Section -->
+  <section class="products-section" id="products">
+    <h2 class="section-title">🏪 Our Products</h2>
+    <p class="section-subtitle">Discover our amazing collection of premium products</p>
+    
+    <div class="controls">
+      <input type="text" id="searchInput" placeholder="Search products by name..." />
+      <button onclick="searchProducts()">🔍 Search</button>
+      <button onclick="resetProducts()">↺ Reset</button>
+      <select id="Rating" onchange="filterByQuantity()">
+        <option value="0">Filter by Stock</option>
+        <option value="1">1+ In Stock</option>
+        <option value="2">2+ In Stock</option>
+        <option value="3">3+ In Stock</option>
+        <option value="4">4+ In Stock</option>
+        <option value="5">5+ In Stock</option>
+      </select>
+    </div>
+
+    <div class="card-container" id="cards">
+      <div class="loader">Loading products...</div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer id="about">
+    <h3>MyCart - Premium E-Commerce Platform</h3>
+    <p>Building the future of online shopping with quality products and resources.</p>
+    <div class="footer-links">
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Service</a>
+      <a href="#">Contact Us</a>
+      <a href="#">FAQ</a>
+    </div>
+    <p>&copy; 2025 MyCart. All rights reserved. | Built with ❤️ for you</p>
   </footer>
 
-
   <script src="./script.js"></script>
-
 </body>
 </html>
